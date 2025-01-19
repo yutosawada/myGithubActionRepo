@@ -4,8 +4,7 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - run: 
-          echo "Hello World"
-          git --version
-          gh repo list
+      - run: echo "Hello World"
+      - run: git --version
+      - run: gh repo list
       - uses: actions/checkout@v4

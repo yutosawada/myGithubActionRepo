@@ -6,5 +6,4 @@ jobs:
     steps:
       - run: echo "Hello World"
       - run: git --version
-      - run: gh repo list
       - uses: actions/checkout@v4

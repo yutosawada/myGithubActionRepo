@@ -1,5 +1,10 @@
 name: Build and Push Docker Image to GHCR
 
+# 必要な権限を指定（パッケージへの書き込み権限を追加）
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     branches:

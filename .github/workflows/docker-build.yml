@@ -18,6 +18,20 @@ jobs:
       # リポジトリのコードをチェックアウト
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+      # テキストファイルの生成
+      - name: Generate text file
+        run: |
+          echo "This is a sample artifact text file." > artifact.txt
+          echo "Additional information can be added here." >> artifact.txt
+          echo "Artifact file content:" && cat artifact.txt
+
+      # artifact.txt をアーティファクトとしてアップロード
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sample-artifact
+          path: artifact.txt
 
       # QEMU のセットアップ（異なるアーキテクチャ向け）
       - name: Set up QEMU

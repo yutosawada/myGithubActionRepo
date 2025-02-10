@@ -1,11 +1,23 @@
 # Dockerfile
 FROM ubuntu:24.04
 
-# 必要に応じてパッケージの更新やインストールを行う例
-# RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+# 1. 必要なパッケージ（tree）のインストール
+RUN apt-get update && \
+    apt-get install -y tree && \
+    rm -rf /var/lib/apt/lists/*
 
-# /hello.txt にメッセージを書き込む
+# 2. 任意のディレクトリを複数作成する
+# 例として /opt 以下に dir1, dir2, dir3 を作成し、
+# dir1 と dir2 にサブディレクトリを追加しています
+RUN mkdir -p /opt/dir1/subdir1 && \
+    mkdir -p /opt/dir2/subdir2 && \
+    mkdir -p /opt/dir3
+
+# 3. 作成したディレクトリ構成をツリー形式でテキストファイルに出力
+RUN tree /opt > /directory_tree.txt
+
+# 4. 挨拶メッセージの作成（任意）
 RUN echo "Hello, World from Docker on Ubuntu 24.04!" > /hello.txt
 
-# コンテナ起動時に /hello.txt の内容を表示
-CMD ["cat", "/hello.txt"]
+# 5. コンテナ起動時に /hello.txt と /directory_tree.txt の内容を表示する
+CMD ["/bin/bash", "-c", "cat /hello.txt && echo && echo 'Directory Structure:' && cat /directory_tree.txt"]

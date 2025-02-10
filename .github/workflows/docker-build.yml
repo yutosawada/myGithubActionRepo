@@ -28,7 +28,7 @@ jobs:
 
       # artifact.txt をアーティファクトとしてアップロード
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: sample-artifact
           path: artifact.txt

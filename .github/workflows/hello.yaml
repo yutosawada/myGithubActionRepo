@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World"
-      - run: git --version
+      - run: echo "Hello Again"
       - uses: actions/checkout@v4

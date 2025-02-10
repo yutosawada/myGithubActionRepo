@@ -1,0 +1,11 @@
+# Dockerfile
+FROM ubuntu:24.04
+
+# 必要に応じてパッケージの更新やインストールを行う例
+# RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# /hello.txt にメッセージを書き込む
+RUN echo "Hello, World from Docker on Ubuntu 24.04!" > /hello.txt
+
+# コンテナ起動時に /hello.txt の内容を表示
+CMD ["cat", "/hello.txt"]

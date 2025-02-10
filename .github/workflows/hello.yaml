@@ -1,9 +1,17 @@
-name: Hello
-on: push
+name: Hello World Workflow
+
+# このワークフローを起動するトリガーを指定（例：push イベント）
+on: [push]
+
 jobs:
-  hello:
+  say-hello:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Hello World"
-      - run: echo "Hello Again"
-      - uses: actions/checkout@v4
+      # GitHub リポジトリのコードをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # シンプルなシェルスクリプトを実行
+      - name: Say Hello
+        run: echo "Hello, World! This is GitHub Actions in action!"
